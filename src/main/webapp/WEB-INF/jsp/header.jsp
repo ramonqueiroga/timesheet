@@ -9,9 +9,15 @@
 <body>
 
 	<nav>
-		<ul class="nav nav-tabs">
-			<li><a href="${linkTo[IndexController].index()}">Home</a></li>
-			<li><a href="${linkTo[UsuarioController].lista()}">Usuarios</a></li>
+		<ul class="nav nav-pills nav-justified">
+			<li role="presentation" class="active"><a href="${linkTo[IndexController].index()}">Home</a></li>
+			<li role="presentation"><a href="${linkTo[UsuarioController].lista()}">Usuarios</a></li>
+			<c:if test="${usuarioLogado.logado}">
+				<li role="presentation"><a href="${linkTo[LoginController].deslogaUsuario()}">Deslogar</a></li>
+			</c:if>
+			<c:if test="${!usuarioLogado.logado}">
+				<li role="presentation"><a href="${linkTo[LoginController].form()}">Autenticar</a></li>
+			</c:if>			
 		</ul>
 	</nav>
 
