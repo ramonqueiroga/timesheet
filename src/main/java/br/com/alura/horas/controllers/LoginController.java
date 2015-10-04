@@ -30,7 +30,9 @@ public class LoginController {
 	public LoginController(){}
 	
 	@Open
-	public void form(){}
+	public void form(){
+		result.include("textoPagina", "Faça seu login!");
+	}
 	
 	@Open
 	public void autentica(String login, String senha){
@@ -50,4 +52,8 @@ public class LoginController {
 		result.redirectTo(this).form();
 	}
 	
+	public String pagina(){
+		return "Login";
+		
+	}
 }

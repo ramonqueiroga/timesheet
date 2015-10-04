@@ -28,7 +28,9 @@ public class UsuarioController {
 	
 	public UsuarioController(){}
 	
-	public void form(){}
+	public void form(){
+		result.include("textoPagina", "Cadastro de usuários");
+	}
 	
 	@IncludeParameters
 	public void adiciona(@Valid Usuario usuario){
@@ -40,6 +42,7 @@ public class UsuarioController {
 	public void lista(){
 		List<Usuario> listaTodos = usuarioDao.listaTodos();
 		result.include("usuarios", listaTodos);
+		result.include("textoPagina", "Usuários cadastrados");
 	}
 
 }
