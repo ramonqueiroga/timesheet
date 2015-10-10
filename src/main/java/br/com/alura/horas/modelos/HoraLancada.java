@@ -77,14 +77,27 @@ public class HoraLancada {
 			Date fim = format.parse(horaFinal);
 			long millis = fim.getTime() - inicio.getTime();
 
-//			long segundos = (millis / 1000) % 60;
 			long minutos = (millis / 60000) % 60;
 			long horas = (millis / 3600000);
-			
+
 			return String.format("%02d:%02d", horas, minutos);
 		} catch (java.text.ParseException e) {
 			return "NONE";
 		}
+	}
+
+	public double getDuracaoNumber() {
+		double total = 0.0;
+		try {
+			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+			Date inicio = format.parse(horaInicial);
+			Date fim = format.parse(horaFinal);
+			long millis = fim.getTime() - inicio.getTime();
+			total = (millis / (1000 * 60 * 60));
+		} catch (java.text.ParseException e) {
+			e.printStackTrace();
+		}
+		return total;
 	}
 
 }

@@ -2,14 +2,14 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="timesheet" %>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
-	<table class="table table-hover">
+	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
 				<th>Id</th>
 				<th>Data</th>
-				<th>Hora Inicia</th>
+				<th>Hora Inicial</th>
 				<th>Hora Final</th>
-				<th>Duracao</th>
+				<th>Duração</th>
 			</tr>		
 		</thead>
 		
