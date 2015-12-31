@@ -1,14 +1,14 @@
-body{
-	margin:41px auto;
+body {
+	margin: 41px auto;
 }
 
-.validation-error{
-	display:block;
-	color:red;
+.validation-error {
+	display: block;
+	color: red;
 }
 
 .navbar-brand {
 	height: 42px;
-	width: 300px;  
+	width: 300px;
 	padding: 0px;
-} 
+}

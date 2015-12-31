@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="Users/Ramon/vraptor4/timesheet/src/main/webapp/WEB-INF/classes" path="src/main/java">
+	<classpathentry kind="src" output="home/ramon/projetos-output/timesheet/src/main/webapp/WEB-INF/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="Users/Ramon/vraptor4/timesheet/src/main/webapp/WEB-INF/classes" path="src/main/resources">
+	<classpathentry excluding="**" kind="src" output="home/ramon/projetos-output/timesheet/src/main/webapp/WEB-INF/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -23,7 +23,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
@@ -33,5 +33,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="Users/Ramon/vraptor4/timesheet/src/main/webapp/WEB-INF/classes"/>
+	<classpathentry kind="output" path="home/ramon/projetos-output/timesheet/src/main/webapp/WEB-INF/classes"/>
 </classpath>

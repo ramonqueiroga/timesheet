@@ -73,8 +73,8 @@
 		
 		<dependency>
 		    <groupId>javax.servlet</groupId>
-		    <artifactId>servlet-api</artifactId>
-		    <version>2.5</version>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
 		</dependency>		
 		
 		<dependency>
@@ -89,7 +89,7 @@
 
 	<build>
 		<finalName>timesheet</finalName>
-		<outputDirectory>c:\Users\Ramon\vraptor4\timesheet/src/main/webapp/WEB-INF/classes</outputDirectory>
+		<outputDirectory>/home/ramon/projetos-output/timesheet/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
