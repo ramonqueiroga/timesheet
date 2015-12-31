@@ -35,10 +35,10 @@ public class UsuarioDao {
 		return usuarioLista.getResultList();
 	}
 
-	public Usuario busca(String login, String senha) {
+	public Usuario busca(String usuario, String senha) {
 		TypedQuery<Usuario> query = manager.createQuery(
 						"select u from Usuario u where u.login = :login and u.senha = :senha", Usuario.class);
-		query.setParameter("login", login);
+		query.setParameter("login", usuario);
 		query.setParameter("senha", senha);
 		try{
 			return query.getSingleResult();
