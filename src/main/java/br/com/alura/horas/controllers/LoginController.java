@@ -41,7 +41,7 @@ public class LoginController {
 			usuarioLogado.fazLogin(usuarioObj);
 			result.redirectTo(UsuarioController.class).lista();
 		}else{
-			validator.add(new SimpleMessage("loginInvalido", "Login ou senha incorretos"));
+			validator.add(new SimpleMessage("loginInvalido", "Login ou senha incorretos!"));
 			validator.onErrorRedirectTo(this).form();			
 		}
 	}

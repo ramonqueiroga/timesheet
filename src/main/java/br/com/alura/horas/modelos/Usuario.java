@@ -19,16 +19,16 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty
+	@NotEmpty(message="Você precisa preencher o campo nome!")
 	private String nome;
 	
-	@NotEmpty
+	@NotEmpty(message="Você precisa preencher o nome de login!")
 	private String login;
 	
-	@NotEmpty
+	@NotEmpty(message="Você precisa preencher a senha!")
 	private String senha;
 	
-	@NotEmpty
+	@NotEmpty(message="Você precisa preencher o email!")
 	@Email
 	private String email;
 
