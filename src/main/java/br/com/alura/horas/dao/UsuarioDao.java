@@ -7,6 +7,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import com.uaihebert.factory.EasyCriteriaFactory;
+import com.uaihebert.model.EasyCriteria;
 
 import br.com.alura.horas.modelos.Usuario;
 
@@ -30,9 +36,9 @@ public class UsuarioDao {
 	}
 
 	public List<Usuario> listaTodos() {
-		TypedQuery<Usuario> usuarioLista = manager.createQuery(
-				"select u from Usuario u", Usuario.class);
-		return usuarioLista.getResultList();
+		EasyCriteria<Usuario> criteria = EasyCriteriaFactory.createQueryCriteria(manager, Usuario.class);
+		criteria.orderByAsc("nome");
+		return criteria.getResultList();
 	}
 
 	public Usuario busca(String usuario, String senha) {

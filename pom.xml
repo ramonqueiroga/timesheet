@@ -84,7 +84,11 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
+		<dependency>
+			<groupId>uaihebert.com</groupId>
+			<artifactId>EasyCriteria</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
