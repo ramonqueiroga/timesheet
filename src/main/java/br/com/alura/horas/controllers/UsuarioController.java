@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import br.com.alura.horas.dao.UsuarioDao;
 import br.com.alura.horas.modelos.Usuario;
-import br.com.alura.horas.seguranca.Open;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;

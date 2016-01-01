@@ -1,56 +1,34 @@
 package br.com.alura.horas.dao;
 
-import java.util.List;
-
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.NonUniqueResultException;
+
+import br.com.alura.horas.modelos.Usuario;
 
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;
 
-import br.com.alura.horas.modelos.Usuario;
-
-@RequestScoped
-public class UsuarioDao {
+public class UsuarioDao extends BaseDao<Usuario>{
 
 	private EntityManager manager;
 
 	@Inject
 	public UsuarioDao(EntityManager manager) {
+		super(Usuario.class, manager);
 		this.manager = manager;
 	}
-
-	public UsuarioDao() {
-	}
-
-	public void adiciona(Usuario usuario) {
-		manager.getTransaction().begin();
-		manager.persist(usuario);
-		manager.getTransaction().commit();
-	}
-
-	public List<Usuario> listaTodos() {
-		EasyCriteria<Usuario> criteria = EasyCriteriaFactory.createQueryCriteria(manager, Usuario.class);
-		criteria.orderByAsc("nome");
-		return criteria.getResultList();
-	}
-
-	public Usuario busca(String usuario, String senha) {
-		TypedQuery<Usuario> query = manager.createQuery(
-						"select u from Usuario u where u.login = :login and u.senha = :senha", Usuario.class);
-		query.setParameter("login", usuario);
-		query.setParameter("senha", senha);
+	
+	public Usuario busca(String usuario, String senha) throws NonUniqueResultException{
 		try{
-			return query.getSingleResult();
-		}catch(NoResultException e){
-			return null;
+			EasyCriteria<Usuario> criteria = EasyCriteriaFactory.createQueryCriteria(manager, Usuario.class);
+			criteria.andEquals("login", usuario);
+			criteria.andEquals("senha", senha);
+			return criteria.getSingleResult();
+		}catch(NonUniqueResultException ex){
+			throw new NonUniqueResultException("Mais de um resultado foi retornado da consulta");
 		}
+		
 	}
 
 }

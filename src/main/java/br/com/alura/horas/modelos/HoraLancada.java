@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class HoraLancada {
 
@@ -22,8 +24,10 @@ public class HoraLancada {
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 
+	@NotEmpty(message="Precisa preencher a hora inicial!")
 	private String horaInicial;
-
+	
+	@NotEmpty(message="Precisa preencher a hora final!")
 	private String horaFinal;
 
 	@ManyToOne

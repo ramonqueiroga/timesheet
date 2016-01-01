@@ -14,46 +14,49 @@ import br.com.caelum.vraptor.validator.Validator;
 @Controller
 public class LoginController {
 
-	private UsuarioDao usuarioDao;
+	private UsuarioDao dao;
 	private UsuarioLogado usuarioLogado;
 	private Result result;
 	private Validator validator;
 
 	@Inject
-	public LoginController(UsuarioDao usuarioDao, UsuarioLogado usuarioLogado, Result result, Validator validator){
-		this.usuarioDao = usuarioDao;
+	public LoginController(UsuarioDao dao,
+			UsuarioLogado usuarioLogado, Result result, Validator validator) {
+		this.dao = dao;
 		this.usuarioLogado = usuarioLogado;
 		this.result = result;
 		this.validator = validator;
 	}
-	
-	public LoginController(){}
-	
+
+	public LoginController() {
+	}
+
 	@Open
-	public void form(){
+	public void form() {
 		result.include("textoPagina", "Faça seu login!");
 	}
-	
+
 	@Open
-	public void autentica(String usuario, String senha){
-		Usuario usuarioObj = usuarioDao.busca(usuario, senha);
-		if(usuarioObj != null){
+	public void autentica(String usuario, String senha) {
+		Usuario usuarioObj = dao.busca(usuario, senha);
+		if (usuarioObj != null) {
 			usuarioLogado.fazLogin(usuarioObj);
 			result.redirectTo(UsuarioController.class).lista();
-		}else{
-			validator.add(new SimpleMessage("loginInvalido", "Login ou senha incorretos!"));
-			validator.onErrorRedirectTo(this).form();			
+		} else {
+			validator.add(new SimpleMessage("loginInvalido",
+					"Login ou senha incorretos!"));
+			validator.onErrorRedirectTo(this).form();
 		}
 	}
-	
+
 	@Open
-	public void deslogaUsuario(){
+	public void deslogaUsuario() {
 		usuarioLogado.desloga();
 		result.redirectTo(this).form();
 	}
-	
-	public String pagina(){
+
+	public String pagina() {
 		return "Login";
-		
+
 	}
 }

@@ -49,7 +49,7 @@ public class HoraLancadaController {
 	}
 	
 	public void relatorioDeHoras(){
-		List<HoraLancada> horas = horaLancadaDao.horasDoUsuario(usuarioLogado.getUsuario());
+		List<HoraLancada> horas = horaLancadaDao.lista(usuarioLogado.getUsuario());
 		RelatorioDeHoras relatorioDeHoras = new RelatorioDeHoras(horas);
 		result.include("textoPagina", "Relatório de horas");
 		result.include("relatorio", relatorioDeHoras);
