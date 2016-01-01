@@ -38,13 +38,13 @@ public class BaseDao<T> implements GenericDao<T> {
 			manager.getTransaction().begin();
 			manager.remove(manager.merge(t));
 			manager.getTransaction().commit();
+			return true;
 		}catch(Exception e){
 			manager.getTransaction().rollback();
 			return false;
 		}finally{
 			manager.close();
 		}
-		return false;
 	}
 
 	@Override
@@ -53,13 +53,13 @@ public class BaseDao<T> implements GenericDao<T> {
 			manager.getTransaction().begin();
 			manager.merge(t);
 			manager.getTransaction().commit();
+			return true;
 		}catch(Exception e){
 			manager.getTransaction().rollback();
 			return false;
 		}finally{
 			manager.close();
 		}
-		return false;
 	}
 
 	@Override
