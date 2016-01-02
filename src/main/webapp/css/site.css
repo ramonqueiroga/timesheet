@@ -1,5 +1,10 @@
+html{
+	height: 95%;
+}	
+
 body {
 	margin: 41px auto;
+	height: 95%;
 }
 
 .validation-error {

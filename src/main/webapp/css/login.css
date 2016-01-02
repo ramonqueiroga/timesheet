@@ -1,6 +1,18 @@
 /*    --------------------------------------------------
 	:: Login Section
 	-------------------------------------------------- */
+.login-background {
+	background-image: url("../images/time.jpg");
+	height: 100.3%;
+}	
+	
+#usuario, #senha
+{
+    background: transparent !important;
+    border: 2px solid #585b58 !important;
+}
+
+
 #login {
     padding-top: 50px
 }
@@ -41,7 +53,7 @@
     height: 25px;
     cursor: pointer;
     border-radius: 3px;
-    border: 1px solid #ccc;
+    border: 2px solid #585b58;
     vertical-align: middle;
     display: inline-block;
 }
