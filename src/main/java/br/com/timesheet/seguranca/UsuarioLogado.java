@@ -1,11 +1,11 @@
-package br.com.alura.horas.seguranca;
+package br.com.timesheet.seguranca;
 
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import br.com.alura.horas.modelos.Usuario;
+import br.com.timesheet.modelos.Usuario;
 
 @Named
 @SessionScoped

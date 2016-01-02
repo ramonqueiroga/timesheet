@@ -1,17 +1,17 @@
-package br.com.alura.horas.controllers;
+package br.com.timesheet.controllers;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-import br.com.alura.horas.dao.HoraLancadaDao;
-import br.com.alura.horas.modelos.HoraLancada;
-import br.com.alura.horas.modelos.RelatorioDeHoras;
-import br.com.alura.horas.seguranca.UsuarioLogado;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.timesheet.dao.HoraLancadaDao;
+import br.com.timesheet.modelos.HoraLancada;
+import br.com.timesheet.modelos.RelatorioDeHoras;
+import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class HoraLancadaController {

@@ -1,4 +1,4 @@
-package br.com.alura.horas.seguranca;
+package br.com.timesheet.seguranca;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

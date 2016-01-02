@@ -1,8 +1,8 @@
-package br.com.alura.horas.textos;
+package br.com.timesheet.textos;
 
 import javax.inject.Named;
 
-import br.com.alura.horas.enums.TextosEnum;
+import br.com.timesheet.enums.TextosEnum;
 
 @Named
 public class TextosEstaticos {

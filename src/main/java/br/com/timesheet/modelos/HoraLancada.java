@@ -1,4 +1,4 @@
-package br.com.alura.horas.modelos;
+package br.com.timesheet.modelos;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

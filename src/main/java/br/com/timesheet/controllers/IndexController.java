@@ -1,12 +1,12 @@
-package br.com.alura.horas.controllers;
+package br.com.timesheet.controllers;
 
 import javax.inject.Inject;
 
-import br.com.alura.horas.seguranca.Open;
-import br.com.alura.horas.seguranca.UsuarioLogado;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.timesheet.seguranca.Open;
+import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class IndexController {

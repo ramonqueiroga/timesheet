@@ -1,4 +1,4 @@
-package br.com.alura.horas.enums;
+package br.com.timesheet.enums;
 
 public enum TextosEnum {
 

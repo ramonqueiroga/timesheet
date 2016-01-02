@@ -1,11 +1,12 @@
-package br.com.alura.horas.dao;
+package br.com.timesheet.dao;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import br.com.alura.horas.modelos.HoraLancada;
-import br.com.alura.horas.modelos.Usuario;
+
+import br.com.timesheet.modelos.HoraLancada;
+import br.com.timesheet.modelos.Usuario;
 
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;

@@ -1,14 +1,14 @@
-package br.com.alura.horas.seguranca;
+package br.com.timesheet.seguranca;
 import javax.inject.Inject;
 
-import br.com.alura.horas.controllers.LoginController;
-import br.com.alura.horas.seguranca.UsuarioLogado;
 import br.com.caelum.vraptor.Accepts;
 import br.com.caelum.vraptor.AroundCall;
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
+import br.com.timesheet.controllers.LoginController;
+import br.com.timesheet.seguranca.UsuarioLogado;
 
 
 @Intercepts

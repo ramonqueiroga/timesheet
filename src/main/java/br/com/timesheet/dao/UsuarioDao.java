@@ -1,10 +1,10 @@
-package br.com.alura.horas.dao;
+package br.com.timesheet.dao;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NonUniqueResultException;
 
-import br.com.alura.horas.modelos.Usuario;
+import br.com.timesheet.modelos.Usuario;
 
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;

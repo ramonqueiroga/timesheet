@@ -1,4 +1,4 @@
-package br.com.alura.horas.infra;
+package br.com.timesheet.infra;
 
 import javax.ejb.ApplicationException;
 import javax.enterprise.context.RequestScoped;

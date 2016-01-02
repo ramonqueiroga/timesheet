@@ -1,16 +1,16 @@
-package br.com.alura.horas.controllers;
+package br.com.timesheet.controllers;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-import br.com.alura.horas.dao.UsuarioDao;
-import br.com.alura.horas.modelos.Usuario;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.timesheet.dao.UsuarioDao;
+import br.com.timesheet.modelos.Usuario;
 
 @Controller
 public class UsuarioController {

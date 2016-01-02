@@ -1,15 +1,15 @@
-package br.com.alura.horas.controllers;
+package br.com.timesheet.controllers;
 
 import javax.inject.Inject;
 
-import br.com.alura.horas.dao.UsuarioDao;
-import br.com.alura.horas.modelos.Usuario;
-import br.com.alura.horas.seguranca.Open;
-import br.com.alura.horas.seguranca.UsuarioLogado;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.timesheet.dao.UsuarioDao;
+import br.com.timesheet.modelos.Usuario;
+import br.com.timesheet.seguranca.Open;
+import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class LoginController {

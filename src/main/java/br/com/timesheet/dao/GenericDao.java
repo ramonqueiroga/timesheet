@@ -1,4 +1,4 @@
-package br.com.alura.horas.dao;
+package br.com.timesheet.dao;
 
 import java.util.List;
 
