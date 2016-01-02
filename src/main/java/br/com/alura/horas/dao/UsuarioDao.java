@@ -9,7 +9,7 @@ import br.com.alura.horas.modelos.Usuario;
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;
 
-public class UsuarioDao extends BaseDao<Usuario>{
+public class UsuarioDao extends AbstractDao<Usuario>{
 
 	private EntityManager manager;
 

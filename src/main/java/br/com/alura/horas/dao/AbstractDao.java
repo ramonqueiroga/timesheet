@@ -7,12 +7,12 @@ import javax.persistence.EntityManager;
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;
 
-public class BaseDao<T> implements GenericDao<T> {
+public abstract class AbstractDao<T> implements GenericDao<T> {
 	
 	private Class<T> classe;
 	private EntityManager manager;
 	
-	public BaseDao(Class<T> classe, EntityManager manager) {
+	public AbstractDao(Class<T> classe, EntityManager manager) {
 		this.classe = classe;
 		this.manager = manager;
 	}

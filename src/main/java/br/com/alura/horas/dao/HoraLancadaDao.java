@@ -10,7 +10,7 @@ import br.com.alura.horas.modelos.Usuario;
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;
 
-public class HoraLancadaDao extends BaseDao<HoraLancada>{
+public class HoraLancadaDao extends AbstractDao<HoraLancada>{
 	
 	private EntityManager manager;
 
