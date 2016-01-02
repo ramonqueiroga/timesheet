@@ -17,3 +17,10 @@ body {
 	width: 300px;
 	padding: 0px;
 }
+
+.form-error-class {
+	color : #FF0000;
+}
+.form-valid-class {
+	color:#00CC00; 
+}

@@ -9,6 +9,8 @@
 <script src="<c:url value='/js/jquery-2.0.0.js' />"></script>
 <script src="<c:url value='/js/bootstrap.js' />"></script>
 <script src="<c:url value='/js/showPassword.js' />"></script>
+<script src="<c:url value='/js/jquery-validate-min.js' />"></script>
+<script src="<c:url value='/js/myMessagesValidation.js' />"></script>
 
 <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet" />
 <link href="<c:url value='/css/site.css'/>" rel="stylesheet" />
@@ -62,11 +64,29 @@
 									class="btn btn-custom btn-lg btn-block transparent-input"
 									value="Entrar">
 							</form>
+							
+							<script type="text/javascript">
+								$('#login-form').validate({
+									errorClass : "form-error-class",
+									validClass : "form-valid-class",
+									rules :{
+										"usuario" : {
+											required : true
+										},
+										"senha" : {
+											required : true,
+										}
+									}
+								});
+							</script>
+							
+							
 							<a href="#" class="forget" data-toggle="modal"
-								data-target=".signin-modal">Não possui cadastro?</a> <a href="#"
-								class="forget" data-toggle="modal" data-target=".forget-modal">Esqueceu
+								data-target=".signin-modal">Não possui cadastro?</a> 
+							<a href="#" class="forget" data-toggle="modal" data-target=".forget-modal">Esqueceu
 								sua senha?</a>
 							<hr>
+							
 						</div>
 					</div>
 					<!-- /.col-xs-12 -->
@@ -116,7 +136,9 @@
 
 					<form role="form"
 						action="${linkTo[CadastroController].cadastraUsuario(null)}"
-						method="post" id="login-form" autocomplete="off">
+						method="post" 
+						id="formCadastro" 
+						autocomplete="off">
 						<div class="modal-body">
 							<div class="form-group">
 								<p>Nome completo:</p>
@@ -143,11 +165,35 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Cancelar</button>
-							<input type="submit" id="btn-login" class="btn btn-primary"
-								value="Entrar">
+							<button type="submit" id="cadastrar" class="btn btn-primary">Enviar</button>
 						</div>
 					</form>
-
+					
+					<script type="text/javascript">
+						$('#formCadastro').validate({
+							errorClass : "form-error-class",
+							validClass : "form-valid-class",
+							rules :{
+								"usuario.nome" : {
+									required : true
+								},
+								"usuario.email" : {
+									required : true,
+									email : true
+								},
+								"usuario.login" : {
+									required : true,
+									minlength : 4
+								},
+								"usuario.senha" : {
+									required : true,
+									minlength : 6
+								}
+							}
+							
+						});
+					</script>
+					
 				</div>
 				<!-- /.modal-content -->
 			</div>

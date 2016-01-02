@@ -2,7 +2,6 @@ package br.com.alura.horas.modelos;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +19,10 @@ public class RelatorioDeHoras {
 	private void calculaHorasPorDia(List<HoraLancada> horas) {
 		Map<Calendar, ArrayList<Double>> horasAgrupadasPorDia = new HashMap<Calendar, ArrayList<Double>>();
 		if (!horas.isEmpty()) {
-			double totalHorasPorDia = 0.0;
 
 			horasAgrupadasPorDia.put(horas.get(0).getData(),
 					new ArrayList<Double>());
 			for (HoraLancada hora : horas) {
-				Date teste = hora.getData().getTime();
 				if (horasAgrupadasPorDia.get(hora.getData()) == null) {
 					ArrayList<Double> totais = new ArrayList<Double>();
 					double horaInicial = Double.parseDouble(hora
@@ -50,7 +47,6 @@ public class RelatorioDeHoras {
 					.entrySet()) {
 
 				Calendar data = entry.getKey();
-				Date teste = data.getTime();
 				ArrayList<Double> horasTotais = entry.getValue();
 				double horasNormais = 0.0;
 				double horasExtras = 0.0;
