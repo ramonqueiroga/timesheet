@@ -5,8 +5,11 @@
 	<title>TimeSheet</title>
 	<script src="<c:url value='/js/jquery-2.0.0.js' />"></script>
 	<script src="<c:url value='/js/bootstrap.js' />"></script>
+	<script src="<c:url value='/js/showPassword.js' />"></script>
+	
 	<link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet"/>
 	<link href="<c:url value='/css/site.css'/>" rel="stylesheet"/>
+	<link href="<c:url value='/css/login.css'/>" rel="stylesheet"/>
 </head>
 <body>
 

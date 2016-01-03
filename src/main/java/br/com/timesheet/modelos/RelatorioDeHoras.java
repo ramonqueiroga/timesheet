@@ -22,7 +22,8 @@ public class RelatorioDeHoras {
 
 			horasAgrupadasPorDia.put(horas.get(0).getData(),
 					new ArrayList<Double>());
-			for (HoraLancada hora : horas) {
+			
+			horas.forEach(hora -> {
 				if (horasAgrupadasPorDia.get(hora.getData()) == null) {
 					ArrayList<Double> totais = new ArrayList<Double>();
 					double horaInicial = Double.parseDouble(hora
@@ -40,8 +41,8 @@ public class RelatorioDeHoras {
 					double total = horaFinal - horaInicial;
 					horasAgrupadasPorDia.get(hora.getData()).add(total);
 				}
+			});
 
-			}
 
 			for (Entry<Calendar, ArrayList<Double>> entry : horasAgrupadasPorDia
 					.entrySet()) {
