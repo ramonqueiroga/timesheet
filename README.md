@@ -4,7 +4,9 @@ Esse é um projeto criado com o propósito de estudos. O ponta pé inicial foi d
 
 Nele utilizo diversas tecnologias como: Framework VRaptor 4, JPA com implementação Hibernate e EasyCriteria para realização das queries, JQuery, Bootstrap para layout de páginas. 
 
+O projeto foi iniciado com Java 7, mas já está adaptado para utilização do Java 8 e suas novas APIs.
+
 Possibilidade de implementar angular-js para controle do front-end.
 
-O pensamento é sempre desenvolver de acordo com os padrões de projetos existentes conforme a necessidade. 
+O pensamento é sempre desenvolver de acordo com os padrões de projetos existentes conforme a necessidade e utilização das mais novas classes que o Java 8 nos proporciona, como exemplo o lambda e a nova API de datas.
 
