@@ -10,3 +10,4 @@ Possibilidade de implementar angular-js para controle do front-end.
 
 O pensamento é sempre desenvolver de acordo com os padrões de projetos existentes conforme a necessidade e utilização das mais novas classes que o Java 8 nos proporciona, como exemplo o lambda e a nova API de datas.
 
+Para gerenciamento das tarefas, estou utilizando o Trello (www.trello.com).
