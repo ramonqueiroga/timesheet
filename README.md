@@ -2,7 +2,7 @@
 
 Esse é um projeto criado com o propósito de estudos. O ponta pé inicial foi dado com o curso do Alura (www.alura.com.br) sobre o VRaptor 4, no escopo de Java Web.
 
-Nele utilizo diversas tecnologias como: Framework VRaptor 4, JPA com implementação Hibernate e EasyCriteria para realização das queries, JQuery, Bootstrap para layout de páginas. 
+Nele utilizo diversas tecnologias como: Framework VRaptor 4, JPA com implementação Hibernate e EasyCriteria para realização das queries, JQuery, Bootstrap para layout de páginas, Maven para controle das dependências, Tomcat 8 como servidor, Postgresql como banco de dados.
 
 O projeto foi iniciado com Java 7, mas já está adaptado para utilização do Java 8 e suas novas APIs.
 
