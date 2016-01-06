@@ -19,6 +19,7 @@ public class LoginController {
 	private Result result;
 	private Validator validator;
 
+
 	@Inject
 	public LoginController(UsuarioDao dao,
 			UsuarioLogado usuarioLogado, Result result, Validator validator) {
@@ -53,6 +54,11 @@ public class LoginController {
 	public void deslogaUsuario() {
 		usuarioLogado.desloga();
 		result.redirectTo(this).form();
+	}
+	
+	@Open
+	public void recuperaSenhaPorEmail(String emailRecuperacao) {
+		String teste = emailRecuperacao;
 	}
 
 	public String pagina() {

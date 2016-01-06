@@ -100,21 +100,28 @@
 			aria-labelledby="myForgetModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title">Recuperar senha</h4>
-					</div>
-					<div class="modal-body">
-						<p>Type your email account</p>
-						<input type="email" name="recovery-email" id="recovery-email"
-							class="form-control" autocomplete="off">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-custom">Recuperar</button>
-					</div>
+					
+					<form role="form" action="${linkTo[LoginController].recuperaSenhaPorEmail(null)}" method="post" id="recovery-form" autocomplete="off">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title">Recuperar senha</h4>
+						</div>
+						
+						<div class="modal-body">
+								<div class="form-group">
+									<p>Type your email account</p>
+									<input type="email" name="emailRecuperacao" id="recovery-email"
+										class="form-control" autocomplete="off">
+								</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							<button type="submit" id="cadastrar" class="btn btn-primary">Recuperar</button>
+						</div>
+					</form>
 				</div>
 				<!-- /.modal-content -->
 			</div>
