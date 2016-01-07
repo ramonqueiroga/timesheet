@@ -10,7 +10,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.security.cert.X509Certificate;
 
 public class SslUtil {
 
