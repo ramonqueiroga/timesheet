@@ -7,5 +7,5 @@
 	<scan>
 		<exclude name="com.google.common.util.concurrent.MoreExecutors$SameThreadExecutorService" />
 	</scan>
-
+	
 </beans>
