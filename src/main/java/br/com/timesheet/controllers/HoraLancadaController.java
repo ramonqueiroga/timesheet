@@ -30,7 +30,9 @@ public class HoraLancadaController {
 		this.usuarioLogado = usuarioLogado;
 	}
 
-	public HoraLancadaController() {}
+	public HoraLancadaController() {
+		this(null, null, null, null);
+	}
 	
 	public void form(){
 		result.include("textoPagina", "Lançamento de horas");

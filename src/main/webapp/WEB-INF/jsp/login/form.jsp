@@ -111,7 +111,7 @@
 						
 						<div class="modal-body">
 								<div class="form-group">
-									<p>Type your email account</p>
+									<p>Digite seu email de cadastro</p>
 									<input type="email" name="emailRecuperacao" id="recovery-email"
 										class="form-control" autocomplete="off">
 								</div>

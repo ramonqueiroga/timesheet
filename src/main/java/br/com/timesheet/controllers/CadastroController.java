@@ -19,7 +19,9 @@ public class CadastroController {
 	private Validator validator;
 	private UsuarioLogado usuarioLogado;
 	
-	public CadastroController(){}
+	public CadastroController(){
+		this(null, null, null, null);
+	}
 	
 	@Inject
 	public CadastroController(UsuarioDao usuarioDao, UsuarioLogado usuarioLogado, Result result, Validator validator){

@@ -14,7 +14,9 @@ public class IndexController {
 	private Result result;
 	private UsuarioLogado usuarioLogado;
 
-	public IndexController() {}
+	public IndexController() {
+		this(null, null);
+	}
 	
 	@Inject
 	public IndexController(UsuarioLogado usuarioLogado, Result result) {

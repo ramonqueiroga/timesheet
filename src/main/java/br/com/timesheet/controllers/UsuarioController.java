@@ -26,7 +26,9 @@ public class UsuarioController {
 		this.validator = validator;
 	}
 	
-	public UsuarioController(){}
+	public UsuarioController() {
+		this(null, null, null);
+	}
 	
 	public void form(){
 		result.include("textoPagina", "Cadastro de usuários");
