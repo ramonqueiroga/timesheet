@@ -8,9 +8,10 @@
 <title>TimeSheet</title>
 <script src="<c:url value='/js/jquery-2.0.0.js' />"></script>
 <script src="<c:url value='/js/bootstrap.js' />"></script>
-<script src="<c:url value='/js/showPassword.js' />"></script>
 <script src="<c:url value='/js/jquery-validate-min.js' />"></script>
+<!-- Esse Js sobrescreve as mensagens do jQuery Validate traduzindo para o português -->
 <script src="<c:url value='/js/myMessagesValidation.js' />"></script>
+<script src="<c:url value='/js/login/showPassword.js' />"></script>
 
 <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet" />
 <link href="<c:url value='/css/site.css'/>" rel="stylesheet" />
@@ -38,11 +39,14 @@
 								<div class="form-group">
 									<c:if test="${errors.size() > 0 }">
 										<div class="alert alert-danger">
-
 											<c:forEach var="error" items="${errors}">
 												<strong>${error.message}</strong>
 											</c:forEach>
-
+										</div>
+									</c:if>
+									<c:if test="${not empty senhaRecuperada}">
+										<div class="alert alert-success">
+											<strong>${senhaRecuperada}</strong>
 										</div>
 									</c:if>
 								</div>
@@ -65,21 +69,8 @@
 									value="Entrar">
 							</form>
 							
-							<script type="text/javascript">
-								$('#login-form').validate({
-									errorClass : "form-error-class",
-									validClass : "form-valid-class",
-									rules :{
-										"usuario" : {
-											required : true
-										},
-										"senha" : {
-											required : true,
-										}
-									}
-								});
-							</script>
-							
+							<!-- valida o formulario de login com jQuery validate -->
+							<script src="<c:url value='/js/login/validateLoginForm.js' />"></script>
 							
 							<a href="#" class="forget" data-toggle="modal"
 								data-target=".signin-modal">Não possui cadastro?</a> 
@@ -122,6 +113,10 @@
 							<button type="submit" id="cadastrar" class="btn btn-primary">Recuperar</button>
 						</div>
 					</form>
+					
+					<!-- valida o formulario de recuperação de senha com jQuery validate -->
+					<script src="<c:url value='/js/login/validateRecoveryForm.js' />"></script>
+					
 				</div>
 				<!-- /.modal-content -->
 			</div>
@@ -144,7 +139,7 @@
 					<form role="form"
 						action="${linkTo[CadastroController].cadastraUsuario(null)}"
 						method="post" 
-						id="formCadastro" 
+						id="signin-form" 
 						autocomplete="off">
 						<div class="modal-body">
 							<div class="form-group">
@@ -176,30 +171,8 @@
 						</div>
 					</form>
 					
-					<script type="text/javascript">
-						$('#formCadastro').validate({
-							errorClass : "form-error-class",
-							validClass : "form-valid-class",
-							rules :{
-								"usuario.nome" : {
-									required : true
-								},
-								"usuario.email" : {
-									required : true,
-									email : true
-								},
-								"usuario.login" : {
-									required : true,
-									minlength : 4
-								},
-								"usuario.senha" : {
-									required : true,
-									minlength : 6
-								}
-							}
-							
-						});
-					</script>
+					<!-- valida o formulario de cadastro com jQuery validate -->
+					<script src="<c:url value='/js/login/validateSigninForm.js' />"></script>
 					
 				</div>
 				<!-- /.modal-content -->
