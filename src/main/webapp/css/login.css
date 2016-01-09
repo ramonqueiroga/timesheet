@@ -2,14 +2,15 @@
 	:: Login Section
 	-------------------------------------------------- */
 .login-background {
-	background-image: url("../images/time.jpg");
+	background-image: url("../images/clock.jpg");
 	height: 100.3%;
 }	
 	
 #usuario, #senha
 {
     background: transparent !important;
-    border: 2px solid #585b58 !important;
+    border: 2px solid #FFFFFF !important;
+    color: #FFFFFF !important;
 }
 
 
@@ -38,10 +39,11 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    color: #FFFFFF;
 }
 #login .checkbox.show:before {
     content: 'X';
-    color: #0250bc;
+    color: #FFFFFF;
     font-size: 17px;
     margin: 1px 0 0 3px;
     position: absolute;
@@ -53,12 +55,13 @@
     height: 25px;
     cursor: pointer;
     border-radius: 3px;
-    border: 2px solid #585b58;
+    border: 2px solid #FFFFFF;
     vertical-align: middle;
     display: inline-block;
+    color: #FFFFFF;
 }
 #login .checkbox .label {
-    color: #6d6d6d;
+    color: #FFFFFF;
     font-size: 13px;
     font-weight: normal;
 }
@@ -70,6 +73,13 @@
     font-size: 13px;
 	text-align: center;
 	display: block;
+	color: #FFFFFF;
+}
+#login .signin{
+    font-size: 13px;
+	text-align: center;
+	display: block;
+	color: #FFFFFF;	
 }
 
 /*    --------------------------------------------------

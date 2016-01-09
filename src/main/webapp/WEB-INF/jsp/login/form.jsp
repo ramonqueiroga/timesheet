@@ -74,7 +74,7 @@
 							
 							<a href="#" class="forget" data-toggle="modal"
 								data-target=".signin-modal">Não possui cadastro?</a> 
-							<a href="#" class="forget" data-toggle="modal" data-target=".forget-modal">Esqueceu
+							<a href="#" class="signin" data-toggle="modal" data-target=".forget-modal">Esqueceu
 								sua senha?</a>
 							<hr>
 							
