@@ -1,4 +1,4 @@
-package br.com.timesheet.enums;
+package br.com.timesheet.textos;
 
 public enum TextosEnum {
 
