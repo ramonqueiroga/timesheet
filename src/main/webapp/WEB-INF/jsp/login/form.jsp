@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="timesheet"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -23,7 +24,9 @@
 		<nav class="navbar navbar-fixed-top navbar-light"
 			style="background-color: #222222; color: #FFFFFF;">
 			<div class="container">
-				<div class="navbar-text pull-left">${textoPagina}</div>
+				<div class="navbar-text pull-left">
+					Aqui vai o logotipo!
+				</div>
 			</div>
 		</nav>
 
@@ -32,7 +35,9 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="form-wrap">
-							<h1>${textoPagina}</h1>
+							<h1>
+								<fmt:message key="titulo.faca.o.login" />
+							</h1>
 							<form role="form"
 								action="${linkTo[LoginController].autentica(null, null)}"
 								method="post" id="login-form" autocomplete="off">
@@ -51,18 +56,24 @@
 									</c:if>
 								</div>
 								<div class="form-group">
-									<label for="usuario" class="sr-only">Usuário</label> <input
-										type="text" name="usuario" id="usuario"
+									<label for="usuario" class="sr-only">
+										<fmt:message key="label.usuario" />
+									</label> 
+									<input type="text" name="usuario" id="usuario"
 										class="form-control transparent-input" placeholder="Usuário">
 								</div>
 								<div class="form-group">
-									<label for="senha" class="sr-only">Senha</label> <input
-										type="password" name="senha" id="senha"
+									<label for="senha" class="sr-only">
+										<fmt:message key="label.senha" />
+									</label> 
+									<input type="password" name="senha" id="senha"
 										class="form-control transparent-input" placeholder="Senha">
 								</div>
 								<div class="checkbox">
 									<span class="character-checkbox" onclick="showPassword()"></span>
-									<span class="label">Mostrar senha</span>
+									<span class="label">
+										<fmt:message key="label.mostrar.senha"/>
+									</span>
 								</div>
 								<input type="submit" id="btn-login"
 									class="btn btn-custom btn-lg btn-block transparent-input"
@@ -72,10 +83,13 @@
 							<!-- valida o formulario de login com jQuery validate -->
 							<script src="<c:url value='/js/login/validateLoginForm.js' />"></script>
 							
-							<a href="#" class="forget" data-toggle="modal"
-								data-target=".signin-modal">Não possui cadastro?</a> 
-							<a href="#" class="signin" data-toggle="modal" data-target=".forget-modal">Esqueceu
-								sua senha?</a>
+							<a href="#" class="forget" data-toggle="modal" data-target=".signin-modal">
+								<fmt:message key="link.nao.possui.cadastro" />
+							</a> 
+							<a href="#" class="signin" data-toggle="modal" data-target=".forget-modal">
+								<fmt:message key="link.esqueceu.sua.senha" />
+							</a>
+							
 							<hr>
 							
 						</div>

@@ -22,8 +22,16 @@
       			Usuários <span class="caret"></span>
     			</a>
     			<ul class="dropdown-menu">
-			        <li><a href="${linkTo[UsuarioController].form()}">Novo usuário</a></li>
-			        <li><a href="${linkTo[UsuarioController].lista()}">Usuários cadastrados</a></li>
+			        <li>
+			        	<a href="${linkTo[UsuarioController].form()}">
+			        		Novo usuário
+			        	</a>
+			        </li>
+			        <li>
+			        	<a href="${linkTo[UsuarioController].lista()}">
+			        		Usuários cadastrados
+			        	</a>
+			        </li>
     			</ul>
   			</li>
   			

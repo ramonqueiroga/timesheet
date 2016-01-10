@@ -1,17 +1,16 @@
 package br.com.timesheet.controllers;
 
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
-
-import org.apache.commons.mail.EmailException;
+import javax.persistence.NonUniqueResultException;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.simplemail.Mailer;
+import br.com.caelum.vraptor.validator.I18nMessage;
+import br.com.caelum.vraptor.validator.Severity;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.timesheet.dao.UsuarioDao;
@@ -19,7 +18,6 @@ import br.com.timesheet.email.EmailEnum;
 import br.com.timesheet.email.EnviaEmail;
 import br.com.timesheet.modelos.Usuario;
 import br.com.timesheet.seguranca.Open;
-import br.com.timesheet.seguranca.SslUtil;
 import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
@@ -47,17 +45,21 @@ public class LoginController {
 
 	@Open
 	public void form() {
-		result.include("textoPagina", "Faça seu login!");
 	}
 
 	@Open
 	public void autentica(String usuario, String senha) {
-		Usuario usuarioObj = dao.buscaUsuarioPorUsuarioESenha(usuario, senha);
-		if (usuarioObj != null) {
-			usuarioLogado.fazLogin(usuarioObj);
-			result.redirectTo(UsuarioController.class).lista();
-		} else {
-			validator.add(new SimpleMessage("loginInvalido", "Login ou senha incorretos!"));
+		try {
+			Usuario usuarioObj = dao.buscaUsuarioPorUsuarioESenha(usuario, senha);
+			if (usuarioObj != null) {
+				usuarioLogado.fazLogin(usuarioObj);
+				result.redirectTo(UsuarioController.class).lista();
+			} else {
+				validator.add(new I18nMessage("Login", "login.invalido"));
+				validator.onErrorRedirectTo(this).form();
+			}
+		} catch (NonUniqueResultException ex) {
+			validator.add(new I18nMessage("MultiplosUsuarios", "multiplos.usuarios"));
 			validator.onErrorRedirectTo(this).form();
 		}
 	}
@@ -69,22 +71,25 @@ public class LoginController {
 	}
 
 	@Open
-	public void recuperaSenhaPorEmail(String emailTo) throws EmailException, KeyManagementException,
-			NoSuchAlgorithmException {
-		String senhaRecuperada = dao.buscaSenha(emailTo);
-		Map<String, String> parameters = preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
-		boolean emailEnviado = EnviaEmail.enviarEmail(parameters, EmailEnum.RECUPERACAOSENHA, mailer);
-		
-		if(emailEnviado) {
-			result.include("senhaRecuperada", "Foi enviado um email para o endereço informado com a senha recuperada");
+	public void recuperaSenhaPorEmail(String emailTo) {
+		try {
+			String senhaRecuperada = dao.buscaSenha(emailTo);
+			Map<String, String> parameters = preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
+			boolean emailEnviado = EnviaEmail.enviarEmail(parameters, EmailEnum.RECUPERACAOSENHA, mailer);
+
+			validator.check(emailEnviado, new I18nMessage("erroAoEnviarEmail", "erro.ao.enviar.email"));
+			validator.onErrorRedirectTo(this).form();
+
+			result.include("senhaRecuperada", "Foi enviado um email para o endereço informado com a senha recuperada!");
 			result.redirectTo(this).form();
-		} else {
-			validator.add(new SimpleMessage("erroAoEnviarEmail", "Não foi possível enviar email!"));
+		} catch (Exception ex) {
+			validator.add(new SimpleMessage("Erro recuperacao senha", ex.getMessage(), Severity.ERROR));
 			validator.onErrorRedirectTo(this).form();
 		}
 	}
-	
-	private Map<String, String> preencheParametrosEmailRecuperacaoSenha(String emailTo, String senhaRecuperada){
+
+	private Map<String, String> preencheParametrosEmailRecuperacaoSenha(
+			String emailTo, String senhaRecuperada) {
 		Map<String, String> parameters = new HashMap<>();
 		parameters.put("subject", "TimeSheet - Recuperação de senha");
 		parameters.put("emailTo", emailTo);

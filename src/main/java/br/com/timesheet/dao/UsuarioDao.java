@@ -21,37 +21,32 @@ public class UsuarioDao extends AbstractDao<Usuario> {
 	}
 
 	public Usuario buscaUsuarioPorUsuarioESenha(String usuario, String senha)
-			throws NonUniqueResultException {
+			throws NonUniqueResultException, NoResultException {
 		try {
 			EasyCriteria<Usuario> criteria = EasyCriteriaFactory
 					.createQueryCriteria(manager, Usuario.class);
 			criteria.andEquals("login", usuario);
 			criteria.andEquals("senha", senha);
 			return criteria.getSingleResult();
+		} catch (NoResultException ex) {
+			return null;
 		} catch (NonUniqueResultException ex) {
-			throw new NonUniqueResultException(
-					"Mais de um resultado foi retornado pela consulta");
+			throw new NonUniqueResultException("Mais de um resultado foi retornado pela consulta");
 		}
 
 	}
 
 	public String buscaSenha(String email) {
 		try {
-
 			EasyCriteria<Usuario> criteria = EasyCriteriaFactory
 					.createQueryCriteria(manager, Usuario.class);
 			criteria.andEquals("email", email);
-
 			Usuario usuario = criteria.getSingleResult();
-			if (usuario != null) {
-				return usuario.getSenha();
-			} else {
-				throw new NoResultException("A busca não retornou dados");
-			}
-
+			return usuario.getSenha();
+		} catch (NoResultException ex) {
+			throw new NoResultException("Não existe usuário para o email informado!");
 		} catch (NonUniqueResultException ex) {
-			throw new NonUniqueResultException(
-					"Mais de um resultado foi retornado pela consulta");
+			throw new NonUniqueResultException("Mais de um resultado foi retornado pela consulta");
 		}
 	}
 
