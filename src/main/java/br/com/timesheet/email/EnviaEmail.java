@@ -2,8 +2,6 @@ package br.com.timesheet.email;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
-
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -13,25 +11,38 @@ import br.com.timesheet.seguranca.SslUtil;
 
 public class EnviaEmail {
 
-	public static boolean enviarEmail(Map<String, String> parameters, EmailEnum tipoEmail, Mailer mailer) {
+	//desabilita ssl para que possa realizar uma chamada https localhost (temporario até achar uma solução melhor)
+	static {
 		try {
-			EmailFactory factory = new EmailFactory();
-			ICriaEmail corpoEmail = factory.criaObjetoEmail(tipoEmail);
-			String criaCorpoEmail = corpoEmail.criaCorpoEmail(parameters);
-			
-			SslUtil.desabilitaSsl(); //desabilita ssl para que possa realizar uma chamada https localhost
-			
-			Email email = new SimpleEmail();
-			email.setSubject(parameters.get("subject"));
-			email.addTo(parameters.get("emailTo"));
-			email.setMsg(criaCorpoEmail);
-			mailer.send(email);
-			
-		} catch (EmailException | KeyManagementException | NoSuchAlgorithmException ex) {
+			SslUtil.desabilitaSsl();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static boolean enviarEmail(ParametrosEmail parametrosEmail, EmailEnum tipoEmail, Mailer mailer) {
+		try {
+			mailer.send(montaEmail(parametrosEmail, tipoEmail));
+		} catch (EmailException ex) {
 			ex.printStackTrace();
 			return false;
 		}
 		return true;
+	}
+	
+	private static Email montaEmail(ParametrosEmail parametrosEmail, EmailEnum tipoEmail) throws EmailException {
+		EmailFactory factory = new EmailFactory();
+		ICriaEmail corpoEmail = factory.criaObjetoEmail(tipoEmail);
+		corpoEmail.criaCorpoEmail(parametrosEmail);
+		
+		Email email = new SimpleEmail();
+		email.setSubject(parametrosEmail.getParametros().get("subject"));
+		email.addTo(parametrosEmail.getParametros().get("emailTo"));
+		email.setMsg(corpoEmail.criaCorpoEmail(parametrosEmail));
+
+		return email;
 	}
 
 

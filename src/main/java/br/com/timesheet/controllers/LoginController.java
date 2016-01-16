@@ -16,6 +16,7 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.timesheet.dao.UsuarioDao;
 import br.com.timesheet.email.EmailEnum;
 import br.com.timesheet.email.EnviaEmail;
+import br.com.timesheet.email.ParametrosEmail;
 import br.com.timesheet.modelos.Usuario;
 import br.com.timesheet.seguranca.Open;
 import br.com.timesheet.seguranca.UsuarioLogado;
@@ -38,7 +39,7 @@ public class LoginController {
 		this.validator = validator;
 		this.mailer = mailer;
 	}
-
+	
 	public LoginController() {
 		this(null, null, null, null, null);
 	}
@@ -74,7 +75,7 @@ public class LoginController {
 	public void recuperaSenhaPorEmail(String emailTo) {
 		try {
 			String senhaRecuperada = dao.buscaSenha(emailTo);
-			Map<String, String> parameters = preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
+			ParametrosEmail parameters = preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
 			boolean emailEnviado = EnviaEmail.enviarEmail(parameters, EmailEnum.RECUPERACAOSENHA, mailer);
 
 			validator.check(emailEnviado, new I18nMessage("erroAoEnviarEmail", "erro.ao.enviar.email"));
@@ -88,13 +89,13 @@ public class LoginController {
 		}
 	}
 
-	private Map<String, String> preencheParametrosEmailRecuperacaoSenha(
-			String emailTo, String senhaRecuperada) {
+	private ParametrosEmail preencheParametrosEmailRecuperacaoSenha(String emailTo, String senhaRecuperada) {
 		Map<String, String> parameters = new HashMap<>();
 		parameters.put("subject", "TimeSheet - Recuperação de senha");
 		parameters.put("emailTo", emailTo);
 		parameters.put("senha", senhaRecuperada);
-		return parameters;
+		ParametrosEmail parametersEmail = new ParametrosEmail(parameters);
+		return parametersEmail;
 	}
 
 }

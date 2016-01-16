@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface ICriaEmail {
 	
-	public String criaCorpoEmail(Map<String, String> parameters);
+	public String criaCorpoEmail(ParametrosEmail parameters);
 
 }
