@@ -1,4 +1,7 @@
-package br.com.timesheet.email;
+package br.com.timesheet.email.recuperasenha;
+
+import br.com.timesheet.email.ICriaEmail;
+import br.com.timesheet.email.ParametrosEmail;
 
 public class EmailRecuperacaoSenha implements ICriaEmail{
 
