@@ -8,10 +8,10 @@ import javax.validation.Valid;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.timesheet.dao.HoraLancadaDao;
+import br.com.timesheet.infra.dao.HoraLancadaDao;
+import br.com.timesheet.infra.seguranca.UsuarioLogado;
 import br.com.timesheet.modelos.HoraLancada;
 import br.com.timesheet.modelos.RelatorioDeHoras;
-import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class HoraLancadaController {
@@ -42,16 +42,11 @@ public class HoraLancadaController {
 		validator.onErrorRedirectTo(this).form();
 		horaLancada.setUsuario(usuarioLogado.getUsuario());
 		horaLancadaDao.adiciona(horaLancada);
-		result.redirectTo(this).lista();
+		result.redirectTo(this).relatorioDeHoras();
 	}
-	
-	public void lista(){
-		result.include("horas", horaLancadaDao.lista(usuarioLogado.getUsuario()));
-		result.include("textoPagina", "Horas lançadas");
-	}
-	
+		
 	public void relatorioDeHoras(){
-		List<HoraLancada> horas = horaLancadaDao.lista(usuarioLogado.getUsuario());
+		List<HoraLancada> horas = horaLancadaDao.listaHorasPorUsuario(usuarioLogado.getUsuario());
 		RelatorioDeHoras relatorioDeHoras = new RelatorioDeHoras(horas);
 		result.include("textoPagina", "Relatório de horas");
 		result.include("relatorio", relatorioDeHoras);

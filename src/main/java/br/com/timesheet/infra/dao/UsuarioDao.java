@@ -1,4 +1,4 @@
-package br.com.timesheet.dao;
+package br.com.timesheet.infra.dao;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

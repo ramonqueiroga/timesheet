@@ -1,4 +1,4 @@
-package br.com.timesheet.dao;
+package br.com.timesheet.infra.dao;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class HoraLancadaDao extends AbstractDao<HoraLancada>{
 		
 	}
 
-	public List<HoraLancada> lista(Usuario usuario){
+	public List<HoraLancada> listaHorasPorUsuario(Usuario usuario){
 		EasyCriteria<HoraLancada> criteria = EasyCriteriaFactory.createQueryCriteria(manager, HoraLancada.class);
 		criteria.innerJoin("usuario");
 		criteria.andEquals("usuario", usuario);

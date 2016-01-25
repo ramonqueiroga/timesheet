@@ -1,4 +1,4 @@
-package br.com.timesheet.seguranca;
+package br.com.timesheet.infra.seguranca;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Accepts;
@@ -8,7 +8,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
 import br.com.timesheet.controllers.LoginController;
-import br.com.timesheet.seguranca.UsuarioLogado;
+import br.com.timesheet.infra.seguranca.UsuarioLogado;
 
 
 @Intercepts

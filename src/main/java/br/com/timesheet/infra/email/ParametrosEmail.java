@@ -1,4 +1,4 @@
-package br.com.timesheet.email;
+package br.com.timesheet.infra.email;
 
 import java.util.Map;
 

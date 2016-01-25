@@ -1,4 +1,4 @@
-package br.com.timesheet.infra;
+package br.com.timesheet.infra.produtores;
 
 import javax.ejb.ApplicationException;
 import javax.enterprise.context.RequestScoped;

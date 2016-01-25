@@ -9,7 +9,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.timesheet.dao.UsuarioDao;
+import br.com.timesheet.infra.dao.UsuarioDao;
 import br.com.timesheet.modelos.Usuario;
 
 @Controller

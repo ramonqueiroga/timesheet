@@ -6,10 +6,10 @@ import javax.validation.Valid;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.timesheet.dao.UsuarioDao;
+import br.com.timesheet.infra.dao.UsuarioDao;
+import br.com.timesheet.infra.seguranca.Open;
+import br.com.timesheet.infra.seguranca.UsuarioLogado;
 import br.com.timesheet.modelos.Usuario;
-import br.com.timesheet.seguranca.Open;
-import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class CadastroController {

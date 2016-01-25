@@ -1,4 +1,4 @@
-package br.com.timesheet.seguranca;
+package br.com.timesheet.infra.seguranca;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

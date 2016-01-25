@@ -1,13 +1,14 @@
-package br.com.timesheet.email;
+package br.com.timesheet.infra.email;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 import br.com.caelum.vraptor.simplemail.Mailer;
-import br.com.timesheet.seguranca.SslUtil;
+import br.com.timesheet.infra.seguranca.SslUtil;
 
 public class EnviaEmail {
 

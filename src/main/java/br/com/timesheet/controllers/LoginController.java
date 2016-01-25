@@ -13,13 +13,13 @@ import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Severity;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.timesheet.dao.UsuarioDao;
-import br.com.timesheet.email.EmailEnum;
-import br.com.timesheet.email.EnviaEmail;
-import br.com.timesheet.email.ParametrosEmail;
+import br.com.timesheet.infra.dao.UsuarioDao;
+import br.com.timesheet.infra.email.EmailEnum;
+import br.com.timesheet.infra.email.EnviaEmail;
+import br.com.timesheet.infra.email.ParametrosEmail;
+import br.com.timesheet.infra.seguranca.Open;
+import br.com.timesheet.infra.seguranca.UsuarioLogado;
 import br.com.timesheet.modelos.Usuario;
-import br.com.timesheet.seguranca.Open;
-import br.com.timesheet.seguranca.UsuarioLogado;
 
 @Controller
 public class LoginController {

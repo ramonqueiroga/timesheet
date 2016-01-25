@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.timesheet.seguranca.Open;
-import br.com.timesheet.seguranca.UsuarioLogado;
+import br.com.timesheet.infra.seguranca.Open;
+import br.com.timesheet.infra.seguranca.UsuarioLogado;
 
 @Controller
 public class IndexController {

@@ -1,4 +1,4 @@
-package br.com.timesheet.seguranca;
+package br.com.timesheet.infra.seguranca;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
