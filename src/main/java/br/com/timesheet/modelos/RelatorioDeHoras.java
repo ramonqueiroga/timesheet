@@ -16,61 +16,62 @@ public class RelatorioDeHoras {
 
 	}
 
+	//TODO refatorar esse método
 	private void calculaHorasPorDia(List<HoraLancada> horas) {
-		Map<Calendar, ArrayList<Double>> horasAgrupadasPorDia = new HashMap<Calendar, ArrayList<Double>>();
-		if (!horas.isEmpty()) {
-
-			horasAgrupadasPorDia.put(horas.get(0).getData(),
-					new ArrayList<Double>());
-			
-			horas.forEach(hora -> {
-				if (horasAgrupadasPorDia.get(hora.getData()) == null) {
-					ArrayList<Double> totais = new ArrayList<Double>();
-					double horaInicial = Double.parseDouble(hora
-							.getHoraInicial().replace(":", "."));
-					double horaFinal = Double.parseDouble(hora.getHoraFinal()
-							.replace(":", "."));
-					double total = horaFinal - horaInicial;
-					totais.add(total);
-					horasAgrupadasPorDia.put(hora.getData(), totais);
-				} else {
-					double horaInicial = Double.parseDouble(hora
-							.getHoraInicial().replace(":", "."));
-					double horaFinal = Double.parseDouble(hora.getHoraFinal()
-							.replace(":", "."));
-					double total = horaFinal - horaInicial;
-					horasAgrupadasPorDia.get(hora.getData()).add(total);
-				}
-			});
-
-
-			for (Entry<Calendar, ArrayList<Double>> entry : horasAgrupadasPorDia
-					.entrySet()) {
-
-				Calendar data = entry.getKey();
-				ArrayList<Double> horasTotais = entry.getValue();
-				double horasNormais = 0.0;
-				double horasExtras = 0.0;
-
-				double total = 0.0;
-				for (Double horaTotal : horasTotais) {
-					total += horaTotal;
-				}
-
-				if (total > 8.0) {
-					horasExtras = total - 8.0;
-					horasNormais = 8.0;
-				} else {
-					horasNormais = total;
-				}
-
-				HorasPorDia horaPorDia = new HorasPorDia(horasNormais,
-						horasExtras, data, total);
-				this.horasPorDia.add(horaPorDia);
-
-			}
-
-		}
+//		Map<Calendar, ArrayList<Double>> horasAgrupadasPorDia = new HashMap<Calendar, ArrayList<Double>>();
+//		if (!horas.isEmpty()) {
+//
+//			horasAgrupadasPorDia.put(horas.get(0).getData(),
+//					new ArrayList<Double>());
+//			
+//			horas.forEach(hora -> {
+//				if (horasAgrupadasPorDia.get(hora.getData()) == null) {
+//					ArrayList<Double> totais = new ArrayList<Double>();
+//					double horaInicial = Double.parseDouble(hora
+//							.getHoraInicial().replace(":", "."));
+//					double horaFinal = Double.parseDouble(hora.getHoraFinal()
+//							.replace(":", "."));
+//					double total = horaFinal - horaInicial;
+//					totais.add(total);
+//					horasAgrupadasPorDia.put(hora.getData(), totais);
+//				} else {
+//					double horaInicial = Double.parseDouble(hora
+//							.getHoraInicial().replace(":", "."));
+//					double horaFinal = Double.parseDouble(hora.getHoraFinal()
+//							.replace(":", "."));
+//					double total = horaFinal - horaInicial;
+//					horasAgrupadasPorDia.get(hora.getData()).add(total);
+//				}
+//			});
+//
+//
+//			for (Entry<Calendar, ArrayList<Double>> entry : horasAgrupadasPorDia
+//					.entrySet()) {
+//
+//				Calendar data = entry.getKey();
+//				ArrayList<Double> horasTotais = entry.getValue();
+//				double horasNormais = 0.0;
+//				double horasExtras = 0.0;
+//
+//				double total = 0.0;
+//				for (Double horaTotal : horasTotais) {
+//					total += horaTotal;
+//				}
+//
+//				if (total > 8.0) {
+//					horasExtras = total - 8.0;
+//					horasNormais = 8.0;
+//				} else {
+//					horasNormais = total;
+//				}
+//
+//				HorasPorDia horaPorDia = new HorasPorDia(horasNormais,
+//						horasExtras, data, total);
+//				this.horasPorDia.add(horaPorDia);
+//
+//			}
+//
+//		}
 	}
 
 	public List<HorasPorDia> getHorasPorDia() {

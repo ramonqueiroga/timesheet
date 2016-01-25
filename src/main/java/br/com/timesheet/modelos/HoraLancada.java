@@ -1,9 +1,9 @@
 package br.com.timesheet.modelos;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class HoraLancada {
@@ -24,11 +22,11 @@ public class HoraLancada {
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 
-	@NotEmpty(message="Precisa preencher a hora inicial!")
-	private String horaInicial;
+	@Column
+	private LocalDateTime horaInicial;
 	
-	@NotEmpty(message="Precisa preencher a hora final!")
-	private String horaFinal;
+	@Column
+	private LocalDateTime horaFinal;
 
 	@ManyToOne
 	private Usuario usuario;
@@ -49,19 +47,19 @@ public class HoraLancada {
 		this.data = data;
 	}
 
-	public String getHoraInicial() {
+	public LocalDateTime getHoraInicial() {
 		return horaInicial;
 	}
 
-	public void setHoraInicial(String horaInicial) {
+	public void setHoraInicial(LocalDateTime horaInicial) {
 		this.horaInicial = horaInicial;
 	}
 
-	public String getHoraFinal() {
+	public LocalDateTime getHoraFinal() {
 		return horaFinal;
 	}
 
-	public void setHoraFinal(String horaFinal) {
+	public void setHoraFinal(LocalDateTime horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 
@@ -73,34 +71,33 @@ public class HoraLancada {
 		this.usuario = usuario;
 	}
 
+	//TODO refatorar esse método
 	public String getDuracao() {
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-
-			Date inicio = format.parse(horaInicial);
-			Date fim = format.parse(horaFinal);
-			long millis = fim.getTime() - inicio.getTime();
-
-			long minutos = (millis / 60000) % 60;
-			long horas = (millis / 3600000);
-
-			return String.format("%02d:%02d", horas, minutos);
-		} catch (java.text.ParseException e) {
-			return "NONE";
-		}
+//			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//
+//			Date inicio = format.parse(horaInicial);
+//			Date fim = format.parse(horaFinal);
+//			long millis = fim.getTime() - inicio.getTime();
+//
+//			long minutos = (millis / 60000) % 60;
+//			long horas = (millis / 3600000);
+//
+//			return String.format("%02d:%02d", horas, minutos);
+			return "";
 	}
 
+	//TODO refatorar esse método
 	public double getDuracaoNumber() {
 		double total = 0.0;
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-			Date inicio = format.parse(horaInicial);
-			Date fim = format.parse(horaFinal);
-			long millis = fim.getTime() - inicio.getTime();
-			total = (millis / (1000 * 60 * 60));
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//			Date inicio = format.parse(horaInicial);
+//			Date fim = format.parse(horaFinal);
+//			long millis = fim.getTime() - inicio.getTime();
+//			total = (millis / (1000 * 60 * 60));
+//		} catch (java.text.ParseException e) {
+//			e.printStackTrace();
+//		}
 		return total;
 	}
 
