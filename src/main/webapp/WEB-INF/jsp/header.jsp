@@ -41,7 +41,7 @@
     			</a>
     			<ul class="dropdown-menu">
 			        <li><a href="${linkTo[HoraLancadaController].form()}">Novo lançamento</a></li>
-			        <li><a href="${linkTo[HoraLancadaController].relatorioDeHoras()}">Relatório de horas</a></li>
+			        <li><a href="${linkTo[HoraLancadaController].lista()}">Relatório de horas</a></li>
     			</ul>
   			</li>  			
 			

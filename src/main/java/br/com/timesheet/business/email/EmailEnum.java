@@ -1,4 +1,4 @@
-package br.com.timesheet.infra.email;
+package br.com.timesheet.business.email;
 
 public enum EmailEnum {
 	

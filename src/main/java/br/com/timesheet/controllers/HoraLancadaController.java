@@ -41,6 +41,7 @@ public class HoraLancadaController {
 	public void adiciona(@Valid HoraLancada horaLancada){
 		validator.onErrorRedirectTo(this).form();
 		horaLancada.setUsuario(usuarioLogado.getUsuario());
+		
 		horaLancadaDao.adiciona(horaLancada);
 		result.redirectTo(this).lista();
 	}

@@ -1,6 +1,8 @@
 package br.com.timesheet.modelos;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import br.com.timesheet.business.util.DateUtil;
 
 @Entity
 public class HoraLancada {
@@ -71,34 +75,8 @@ public class HoraLancada {
 		this.usuario = usuario;
 	}
 
-	//TODO refatorar esse método
 	public String getDuracao() {
-//			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-//
-//			Date inicio = format.parse(horaInicial);
-//			Date fim = format.parse(horaFinal);
-//			long millis = fim.getTime() - inicio.getTime();
-//
-//			long minutos = (millis / 60000) % 60;
-//			long horas = (millis / 3600000);
-//
-//			return String.format("%02d:%02d", horas, minutos);
-			return "";
-	}
-
-	//TODO refatorar esse método
-	public double getDuracaoNumber() {
-		double total = 0.0;
-//		try {
-//			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-//			Date inicio = format.parse(horaInicial);
-//			Date fim = format.parse(horaFinal);
-//			long millis = fim.getTime() - inicio.getTime();
-//			total = (millis / (1000 * 60 * 60));
-//		} catch (java.text.ParseException e) {
-//			e.printStackTrace();
-//		}
-		return total;
+		return DateUtil.calculadaDuracaoEntreDatas(horaInicial, horaFinal);
 	}
 
 }

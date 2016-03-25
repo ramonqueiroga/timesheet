@@ -1,6 +1,5 @@
-package br.com.timesheet.infra.email;
+package br.com.timesheet.business.email;
 
-import br.com.timesheet.infra.email.recuperacaosenha.EmailRecuperacaoSenha;
 
 public class EmailFactory {
 	
