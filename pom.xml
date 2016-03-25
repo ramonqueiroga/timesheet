@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
-	<description>A blank project to start using VRaptor 4</description>
+	<description>Projeto timesheet de estudo</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

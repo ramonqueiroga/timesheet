@@ -42,7 +42,12 @@ public class HoraLancadaController {
 		validator.onErrorRedirectTo(this).form();
 		horaLancada.setUsuario(usuarioLogado.getUsuario());
 		horaLancadaDao.adiciona(horaLancada);
-		result.redirectTo(this).relatorioDeHoras();
+		result.redirectTo(this).lista();
+	}
+	
+	public void lista() {
+		List<HoraLancada> horasCadastradas = horaLancadaDao.listaHorasPorUsuario(usuarioLogado.getUsuario());		
+		result.include("horas", horasCadastradas);
 	}
 		
 	public void relatorioDeHoras(){

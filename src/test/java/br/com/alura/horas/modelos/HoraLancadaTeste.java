@@ -5,7 +5,7 @@ import org.junit.Test;
 public class HoraLancadaTeste {
 
 	@Test
-	public void TestaQueHoraLancadaEstacorreta(){
+	public void TestaQueHoraLancadaEstacorreta() {
 		//TODO assim que as lógicas ficarem corrigidas, implementar o teste
 	}
 	
