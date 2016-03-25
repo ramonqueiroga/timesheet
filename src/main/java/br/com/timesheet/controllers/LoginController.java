@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.timesheet.infra.dao.UsuarioDao;
 import br.com.timesheet.infra.email.EmailEnum;
+import br.com.timesheet.infra.email.EmailHelper;
 import br.com.timesheet.infra.email.EnviaEmail;
 import br.com.timesheet.infra.email.ParametrosEmail;
 import br.com.timesheet.infra.seguranca.Open;
@@ -29,19 +30,21 @@ public class LoginController {
 	private Result result;
 	private Validator validator;
 	private Mailer mailer;
+	private EmailHelper emailHelper;
 
 	@Inject
 	public LoginController(UsuarioDao dao, UsuarioLogado usuarioLogado,
-			Result result, Validator validator, Mailer mailer) {
+			EmailHelper emailHelper, Result result, Validator validator, Mailer mailer) {
 		this.dao = dao;
 		this.usuarioLogado = usuarioLogado;
+		this.emailHelper = emailHelper;
 		this.result = result;
 		this.validator = validator;
 		this.mailer = mailer;
 	}
 	
 	public LoginController() {
-		this(null, null, null, null, null);
+		this(null, null, null, null, null, null);
 	}
 
 	@Open
@@ -75,7 +78,7 @@ public class LoginController {
 	public void recuperaSenhaPorEmail(String emailTo) {
 		try {
 			String senhaRecuperada = dao.buscaSenha(emailTo);
-			ParametrosEmail parameters = preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
+			ParametrosEmail parameters = emailHelper.preencheParametrosEmailRecuperacaoSenha(emailTo, senhaRecuperada);
 			boolean emailEnviado = EnviaEmail.enviarEmail(parameters, EmailEnum.RECUPERACAOSENHA, mailer);
 
 			validator.check(emailEnviado, new I18nMessage("erroAoEnviarEmail", "erro.ao.enviar.email"));
@@ -87,15 +90,6 @@ public class LoginController {
 			validator.add(new SimpleMessage("Erro recuperacao senha", ex.getMessage(), Severity.ERROR));
 			validator.onErrorRedirectTo(this).form();
 		}
-	}
-
-	private ParametrosEmail preencheParametrosEmailRecuperacaoSenha(String emailTo, String senhaRecuperada) {
-		Map<String, String> parameters = new HashMap<>();
-		parameters.put("subject", "TimeSheet - Recuperação de senha");
-		parameters.put("emailTo", emailTo);
-		parameters.put("senha", senhaRecuperada);
-		ParametrosEmail parametersEmail = new ParametrosEmail(parameters);
-		return parametersEmail;
 	}
 
 }
