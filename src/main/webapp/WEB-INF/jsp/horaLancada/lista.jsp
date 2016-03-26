@@ -16,7 +16,7 @@
 		<tbody>
 			<c:forEach items="${horas}" var="hora">
 				<tr>
-					<td>${hora.id}</td>
+					<td>${hora.horaLancadaId}</td>
 					<td>${hora.data.time}</td>
 					<td>${hora.horaInicial}</td>
 					<td>${hora.horaFinal}</td>

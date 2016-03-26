@@ -26,7 +26,6 @@ public class IndexController {
 	}
 	
 	@Path("/home")
-	@Open
 	public void index(){
 		result.include("textoPagina", (usuarioLogado.getUsuario() != null ? usuarioLogado.getUsuario().getNome() + ", seja bem-vindo(a)!" : "Seja bem-vindo(a)!"));
 	}

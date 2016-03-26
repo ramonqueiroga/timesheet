@@ -1,5 +1,6 @@
 package br.com.timesheet.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,8 +36,10 @@ public class UsuarioController {
 	}
 	
 	@IncludeParameters
-	public void adiciona(@Valid Usuario usuario){
+	public void adiciona(@Valid Usuario usuario) {
 		validator.onErrorRedirectTo(this).form();
+		usuario.setCriado(LocalDateTime.now());
+		usuario.setCriadoPor(usuario.getUsuarioId().toString());
 		usuarioDao.adiciona(usuario);
 		result.redirectTo(this).lista();
 	}

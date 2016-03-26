@@ -57,7 +57,7 @@ public class LoginController {
 			Usuario usuarioObj = dao.buscaUsuarioPorUsuarioESenha(usuario, senha);
 			if (usuarioObj != null) {
 				usuarioLogado.fazLogin(usuarioObj);
-				result.redirectTo(UsuarioController.class).lista();
+				result.redirectTo(IndexController.class).index();
 			} else {
 				validator.add(new I18nMessage("Login", "login.invalido"));
 				validator.onErrorRedirectTo(this).form();

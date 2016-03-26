@@ -1,23 +1,27 @@
 package br.com.timesheet.modelos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.com.timesheet.modelos.generico.TabelaModel;
+
 @Entity
-public class Usuario implements Serializable{
+public class Usuario extends TabelaModel implements Serializable {
 
 	private static final long serialVersionUID = -4982036270293800683L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Integer usuario_id;
 	
 	@NotEmpty(message="Você precisa preencher o campo nome!")
 	private String nome;
@@ -31,13 +35,16 @@ public class Usuario implements Serializable{
 	@NotEmpty(message="Você precisa preencher o email!")
 	@Email
 	private String email;
+	
+	@OneToMany(mappedBy="usuario")
+	private List<HoraLancada> horasLancadas;
 
-	public Integer getId() {
-		return id;
+	public Integer getUsuarioId() {
+		return usuario_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer usuario_id) {
+		this.usuario_id = usuario_id;
 	}
 
 	public String getNome() {

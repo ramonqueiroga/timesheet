@@ -1,5 +1,6 @@
 package br.com.timesheet.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.timesheet.infra.dao.HoraLancadaDao;
 import br.com.timesheet.infra.seguranca.UsuarioLogado;
 import br.com.timesheet.modelos.HoraLancada;
-import br.com.timesheet.modelos.RelatorioDeHoras;
+import br.com.timesheet.modelos.Usuario;
 
 @Controller
 public class HoraLancadaController {
@@ -40,7 +41,11 @@ public class HoraLancadaController {
 	
 	public void adiciona(@Valid HoraLancada horaLancada){
 		validator.onErrorRedirectTo(this).form();
-		horaLancada.setUsuario(usuarioLogado.getUsuario());
+	
+		Usuario usuario = usuarioLogado.getUsuario();
+		horaLancada.setUsuario(usuario);
+		horaLancada.setCriado(LocalDateTime.now());
+		horaLancada.setCriadoPor(usuario.getUsuarioId().toString());
 		
 		horaLancadaDao.adiciona(horaLancada);
 		result.redirectTo(this).lista();
@@ -49,13 +54,6 @@ public class HoraLancadaController {
 	public void lista() {
 		List<HoraLancada> horasCadastradas = horaLancadaDao.listaHorasPorUsuario(usuarioLogado.getUsuario());		
 		result.include("horas", horasCadastradas);
-	}
-		
-	public void relatorioDeHoras(){
-		List<HoraLancada> horas = horaLancadaDao.listaHorasPorUsuario(usuarioLogado.getUsuario());
-		RelatorioDeHoras relatorioDeHoras = new RelatorioDeHoras(horas);
-		result.include("textoPagina", "Relatório de horas");
-		result.include("relatorio", relatorioDeHoras);
 	}
 
 }
